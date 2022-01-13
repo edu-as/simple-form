@@ -1,17 +1,12 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-
+import TextField from "@material-ui/core/TextField";
 function RegisterForm(){
     return(
         <form>
-            <label>Nome</label>
-            <input type="text" />
-            
-            <label>Sobrenome</label>
-            <input type="text" />
-
-            <label>CPF</label>
-            <input type="text" />
+            <TextField id="nome" label="Nome" variant="outlined" margin="normal" fullWidth />
+            <TextField id="nome" label="Sobrenome" variant="outlined" margin="normal" fullWidth />
+            <TextField id="nome" label="CPF" variant="outlined" margin="normal" fullWidth/>
 
             <label>Promoções</label>
             <input type="checkbox" />

@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { Fragment } from 'react/cjs/react.production.min';
+import { Container } from '@material-ui/core';
 import './App.css';
 import RegisterForm from './components/register-form/register-form';
 
 class App extends Component {
   render() {
     return(
-      <Fragment>
+      <Container maxWidth="sm">
         <h1>Formulário de cadastro</h1>
         <RegisterForm/>
-      </Fragment>
+      </Container>
     );
   }
 }
