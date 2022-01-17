@@ -8,10 +8,14 @@ class App extends Component {
     return(
       <Container component="article" maxWidth="sm">
         <Typography align='center' variant="h3" component="h1">Formulário de cadastro</Typography>
-        <RegisterForm/>
+        <RegisterForm toSend={toSendForm}/>
       </Container>
     );
   }
+}
+
+function toSendForm(info){
+  console.log(info);
 }
 
 export default App;
