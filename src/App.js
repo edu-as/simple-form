@@ -8,7 +8,7 @@ class App extends Component {
     return(
       <Container component="article" maxWidth="sm">
         <Typography align='center' variant="h3" component="h1">Formulário de cadastro</Typography>
-        <RegisterForm toSend={toSendForm}/>
+        <RegisterForm toSend={toSendForm} validCpf={validCpf} />
       </Container>
     );
   }
@@ -16,6 +16,14 @@ class App extends Component {
 
 function toSendForm(info){
   console.log(info);
+}
+
+function validCpf(cpfInput){
+  if(cpfInput.length !==11){
+    return {valid:false, text:"O CPF deve possuir 11 digitos"}
+  }else{
+    return{valid:true, text:""}
+  }
 }
 
 export default App;

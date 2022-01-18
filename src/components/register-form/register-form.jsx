@@ -1,18 +1,20 @@
-import React, {useState} from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import { Button, TextField, Switch, FormControlLabel } from '@material-ui/core';
 
-function RegisterForm(props){
+function RegisterForm({toSend, validCpf}) {
   const [nameInput, setNameInput] = useState("");
   const [surNameInput, setSurNameInput] = useState("");
   const [cpfInput, setCpfInput] = useState("");
   const [saleInput, setSaleInput] = useState("true");
   const [newsInput, setNewsInput] = useState("true");
+  const [erros, setErros] = useState({cpfInput:{valid:true, text:""}})
 
   return(
     <form
         onSubmit={(event) => {
           event.preventDefault();
-          props.toSend({nameInput, surNameInput, cpfInput, saleInput, newsInput});
+          toSend({nameInput, surNameInput, cpfInput, saleInput, newsInput});
         }}
     >
     <TextField
@@ -42,6 +44,12 @@ function RegisterForm(props){
         onChange={(event) => {
             setCpfInput(event.target.value);
         }}
+        onBlur={(event) => {
+            const itsValid = validCpf(cpfInput);
+            setErros({cpfInput:itsValid});
+        }}
+        error={!erros.cpfInput.valid}
+        helperText={erros.cpfInput.text}
         id="cpf"
         label="CPF"
         variant="outlined"
@@ -69,7 +77,7 @@ function RegisterForm(props){
                 checked={newsInput}
                 onChange={(event) =>{
                     setNewsInput(event.target.checked)
-                }}
+                }} 
                 name="news"
                 color="primary" 
             />
