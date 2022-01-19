@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { Button, TextField, Switch, FormControlLabel } from '@material-ui/core';
 
-function RegisterForm({toSend, validCpf}) {
+function PersonalInfo ({toSend, validCpf}) {
   const [nameInput, setNameInput] = useState("");
   const [surNameInput, setSurNameInput] = useState("");
   const [cpfInput, setCpfInput] = useState("");
@@ -93,4 +93,4 @@ function RegisterForm({toSend, validCpf}) {
     </form>
     );
 }
-export default RegisterForm;
+export default PersonalInfo;
