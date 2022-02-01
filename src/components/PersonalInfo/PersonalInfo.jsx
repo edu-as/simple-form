@@ -1,52 +1,52 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { Button, TextField, Switch, FormControlLabel } from '@material-ui/core';
+import * as React from "react";
+import { useState } from "react";
+import { Button, TextField, Switch, FormControlLabel } from "@material-ui/core";
 
-function PersonalInfo ({toSend, validCpf}) {
+function PersonalInfo({ toSend, validCpf }) {
   const [nameInput, setNameInput] = useState("");
   const [surNameInput, setSurNameInput] = useState("");
   const [cpfInput, setCpfInput] = useState("");
   const [saleInput, setSaleInput] = useState("true");
   const [newsInput, setNewsInput] = useState("true");
-  const [erros, setErros] = useState({cpfInput:{valid:true, text:""}})
+  const [erros, setErros] = useState({ cpfInput: { valid: true, text: "" } });
 
-  return(
+  return (
     <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          toSend({nameInput, surNameInput, cpfInput, saleInput, newsInput});
-        }}
+      onSubmit={(event) => {
+        event.preventDefault();
+        toSend({ nameInput, surNameInput, cpfInput, saleInput, newsInput });
+      }}
     >
-    <TextField
+      <TextField
         value={nameInput}
         onChange={(event) => {
-            setNameInput(event.target.value);
+          setNameInput(event.target.value);
         }}
         id="name"
         label="Nome"
         variant="outlined"
         margin="normal"
-        fullWidth 
-    />
-    <TextField
+        fullWidth
+      />
+      <TextField
         value={surNameInput}
         onChange={(event) => {
-            setSurNameInput(event.target.value);
+          setSurNameInput(event.target.value);
         }}
         id="surName"
         label="Sobrenome"
         variant="outlined"
         margin="normal"
-        fullWidth 
-    />
-    <TextField
+        fullWidth
+      />
+      <TextField
         value={cpfInput}
         onChange={(event) => {
-            setCpfInput(event.target.value);
+          setCpfInput(event.target.value);
         }}
         onBlur={(event) => {
-            const itsValid = validCpf(cpfInput);
-            setErros({cpfInput:itsValid});
+          const itsValid = validCpf(cpfInput);
+          setErros({ cpfInput: itsValid });
         }}
         error={!erros.cpfInput.valid}
         helperText={erros.cpfInput.text}
@@ -54,43 +54,40 @@ function PersonalInfo ({toSend, validCpf}) {
         label="CPF"
         variant="outlined"
         margin="normal"
-        fullWidth 
-    />
-    
-    <FormControlLabel
+        fullWidth
+      />
+
+      <FormControlLabel
         label="Promoções"
         control={
-            <Switch 
-                checked={saleInput}
-                onChange={(event) =>{
-                    setSaleInput(event.target.checked)
-                }}
-                name="sale"
-                color="secondary"
-            />
+          <Switch
+            checked={saleInput}
+            onChange={(event) => {
+              setSaleInput(event.target.checked);
+            }}
+            name="sale"
+            color="secondary"
+          />
         }
-    />
-    <FormControlLabel
+      />
+      <FormControlLabel
         label="Novidades"
         control={
-            <Switch 
-                checked={newsInput}
-                onChange={(event) =>{
-                    setNewsInput(event.target.checked)
-                }} 
-                name="news"
-                color="primary" 
-            />
+          <Switch
+            checked={newsInput}
+            onChange={(event) => {
+              setNewsInput(event.target.checked);
+            }}
+            name="news"
+            color="primary"
+          />
         }
-    />
-    
-    <Button 
-        type="submit"
-        variant="outlined"
-        color="primary">
+      />
+
+      <Button type="submit" variant="outlined" color="primary">
         Cadastrar
-    </Button>
+      </Button>
     </form>
-    );
+  );
 }
 export default PersonalInfo;
