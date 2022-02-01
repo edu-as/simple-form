@@ -5,14 +5,19 @@ import ToReceive from "../ToReceive/ToReceive";
 import { Typography } from "@material-ui/core";
 
 function RegisterForm({ toSend, validCpf }) {
-  const [stageLatest, setStageLatest] = useState(1);
 
-  function latestForm(stage){
+  const [stageLatest, setStageLatest] = useState(0);
+
+  function nextStage(){
+    setStageLatest(stageLatest+1);
+  }
+
+  function latestForm(stage) {
     switch (stage) {
       case 0:
-        return <UserInfo />;
+        return <UserInfo toSend={nextStage} />;
       case 1:
-        return <PersonalInfo toSend={toSend} validCpf={validCpf}  />;
+        return <PersonalInfo toSend={nextStage} validCpf={validCpf}  />;
       case 2:
         return<ToReceive />;
         default:
