@@ -1,36 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PersonalInfo from "../PersonalInfo/PersonalInfo";
 import UserInfo from "../UserInfo/UserInfo";
 import ToReceive from "../ToReceive/ToReceive";
-import { Typography } from "@material-ui/core";
 
 function RegisterForm({ toSend, validCpf }) {
-
   const [stageLatest, setStageLatest] = useState(0);
+  const [infoObtained, setObtained] = useState({});
 
-  function nextStage(){
-    setStageLatest(stageLatest+1);
+  useEffect(()=>{
+   console.log(infoObtained);
+  })
+
+  const formArray = [
+    <UserInfo toSend={pickInfos} />,
+    <PersonalInfo toSend={pickInfos} validCpf={validCpf} />,
+    <ToReceive toSend={pickInfos} />,
+  ];
+
+  function pickInfos(Info) {
+    setObtained({...infoObtained, ...Info});
+    nextStage();
+  }
+  
+  function nextStage() {
+    setStageLatest(stageLatest + 1);
   }
 
-  function latestForm(stage) {
-    switch (stage) {
-      case 0:
-        return <UserInfo toSend={nextStage} />;
-      case 1:
-        return <PersonalInfo toSend={nextStage} validCpf={validCpf}  />;
-      case 2:
-        return<ToReceive />;
-        default:
-          return<Typography>Erro ao selecionar o formulario</Typography>
-    }
-  }
-
-  return (
-    <>
-      {latestForm(stageLatest)} 
-    </>
-  );
-} 
-
+  return <>{formArray[stageLatest]}</>;
+}
 
 export default RegisterForm;

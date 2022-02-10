@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button, TextField, Switch, FormControlLabel } from "@material-ui/core";
 
 function PersonalInfo({ toSend, validCpf }) {
@@ -7,7 +6,7 @@ function PersonalInfo({ toSend, validCpf }) {
   const [surNameInput, setSurNameInput] = useState("");
   const [cpfInput, setCpfInput] = useState("");
   const [saleInput, setSaleInput] = useState("true");
-  const [newsInput, setNewsInput] = useState("true");
+  const [newsInput, setNewsInput] = useState("false");
   const [erros, setErros] = useState({ cpfInput: { valid: true, text: "" } });
 
   return (
@@ -54,6 +53,7 @@ function PersonalInfo({ toSend, validCpf }) {
         label="CPF"
         variant="outlined"
         margin="normal"
+        required
         fullWidth
       />
 

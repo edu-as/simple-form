@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import "fontsource-roboto";
 import { Container, Typography } from "@material-ui/core";
-import PersonalInfo from "./components/PersonalInfo/PersonalInfo";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 class App extends Component {
   render() {
@@ -11,7 +10,7 @@ class App extends Component {
         <Typography align="center" variant="h3" component="h1">
           Formulário de cadastro
         </Typography>
-        <RegisterForm />
+        <RegisterForm toSendForm={toSendForm} validCpf={validCpf} />
       </Container>
     );
   }
