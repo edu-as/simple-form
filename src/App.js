@@ -16,8 +16,8 @@ class App extends Component {
   }
 }
 
-function toSendForm(info) {
-  console.log(info);
+function toSendForm(infoForm) {
+  console.log(infoForm);
 }
 
 function validCpf(cpfInput) {

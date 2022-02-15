@@ -4,7 +4,7 @@ import { Button, TextField, Switch, FormControlLabel } from "@material-ui/core";
 function PersonalInfo({ toSend, validCpf }) {
   const [nameInput, setNameInput] = useState("");
   const [surNameInput, setSurNameInput] = useState("");
-  const [cpfInput, setCpfInput] = useState("");
+  const [cpfInput, setCpfInput] = useState(""); 
   const [saleInput, setSaleInput] = useState("true");
   const [newsInput, setNewsInput] = useState("false");
   const [erros, setErros] = useState({ cpfInput: { valid: true, text: "" } });
